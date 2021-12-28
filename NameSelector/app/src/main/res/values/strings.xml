@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">NameSelector</string>
+    <string name="find_name">Search</string>
+    <string name="display_name">No name to display here :(</string>
+
+    <string-array name="name_categories">
+        <item>elf</item>
+        <item>dwarf</item>
+        <item>human</item>
+        <item>hobbit</item>
+        <item>wizard</item>
+    </string-array>
+</resources>
