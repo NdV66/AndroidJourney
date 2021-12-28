@@ -1,7 +1,9 @@
 package com.ndv.twoactivities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 
 class PalantirResponse : AppCompatActivity() {
@@ -15,10 +17,24 @@ class PalantirResponse : AppCompatActivity() {
 
         val messageView = findViewById<TextView>(R.id.palantirResponse)
         val target = intent.getStringExtra(REQUEST_TARGET)
+        val shareButton = findViewById<Button>(R.id.shareButton)
 
-        messageView.text =
+        val textToDisplay =
             if (target == null)
                 getString(R.string.no_target_selected)
             else getString(R.string.palantir_response, target)
+
+        messageView.text = textToDisplay
+
+        shareButton.setOnClickListener {
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                type = "text/plain"
+                putExtra(Intent.EXTRA_TEXT, textToDisplay)
+            }
+
+            val shareIntent = Intent.createChooser(intent, getString(R.string.share_response_dialog_title))
+            startActivity(shareIntent)
+        }
     }
 }
