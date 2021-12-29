@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.IdRes
 import java.util.*
 
 private const val TIME_UNIT = 60
@@ -14,6 +16,7 @@ private const val DELAY_MS: Long = 1000;
 
 private const val CURRENT_SECONDS = "currentSeconds"
 private const val IS_TIMER_RUNNING = "isRunning"
+private const val WAS_TIMER_RUNNING = "wasRunning"
 
 fun prepareTimeToDisplay(currentSeconds: Long): String {
     val hours = currentSeconds / SECONDS_IN_HOUR
@@ -24,9 +27,9 @@ fun prepareTimeToDisplay(currentSeconds: Long): String {
 }
 
 class MainActivity : AppCompatActivity() {
-
     private var currentSeconds: Long = 0;
     private var isTimerRunning = false;
+    private var wasTimerRunning = false;
     private val handler = Handler(Looper.getMainLooper())
 
     private val updateTimerRunnable = object : Runnable {
@@ -52,36 +55,16 @@ class MainActivity : AppCompatActivity() {
     private fun restoreTimer(savedInstanceState: Bundle) {
         currentSeconds = savedInstanceState.getLong(CURRENT_SECONDS)
         isTimerRunning = savedInstanceState.getBoolean(IS_TIMER_RUNNING)
+        wasTimerRunning = savedInstanceState.getBoolean(WAS_TIMER_RUNNING)
 
         if (isTimerRunning) {
             startTimer()
         }
     }
 
-    private fun setupStartButton() {
-        val startButton = findViewById<Button>(R.id.start)
-
-        startButton.setOnClickListener {
-            isTimerRunning = true
-            startTimer()
-        }
-    }
-
-    private fun setupStopButton() {
-        val stopButton = findViewById<Button>(R.id.stop)
-
-        stopButton.setOnClickListener {
-            isTimerRunning = false
-        }
-    }
-
-    private fun setupClearButton() {
-        val clearButton = findViewById<Button>(R.id.clear)
-
-        clearButton.setOnClickListener {
-            isTimerRunning = false
-            currentSeconds = 0
-        }
+    private fun setupButton(id: Int, action: (View) -> Unit) {
+        val button = findViewById<Button>(id)
+        button.setOnClickListener(action)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -92,14 +75,39 @@ class MainActivity : AppCompatActivity() {
             restoreTimer(savedInstanceState)
         }
 
-        setupStartButton()
-        setupStopButton()
-        setupClearButton()
+        setupButton(R.id.start) {
+            isTimerRunning = true
+            startTimer()
+        }
+
+        setupButton(R.id.stop) {
+            isTimerRunning = false
+        }
+
+        setupButton(R.id.clear) {
+            isTimerRunning = false
+            currentSeconds = 0
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putLong(CURRENT_SECONDS, currentSeconds)
         outState.putBoolean(IS_TIMER_RUNNING, isTimerRunning)
+        outState.putBoolean(WAS_TIMER_RUNNING, wasTimerRunning)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        wasTimerRunning = isTimerRunning
+        isTimerRunning = false
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (wasTimerRunning) {
+            isTimerRunning = true
+            startTimer()
+        }
     }
 }
