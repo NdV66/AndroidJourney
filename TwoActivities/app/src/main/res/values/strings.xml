@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TwoActivities</string>
+    <string name="hint">What do you like to see today…?</string>
+    <string name="call_button">Look through the Palantir</string>
+    <string name="target_request_hint">Enter a place or person</string>
+    <string name="random_target">Set a random target</string>
+    <string name="title_activity_palantir_response">PalantirResponse</string>
+    <string name="no_target_selected">No target is selected, try again :)</string>
+    <string name="palantir_response">Wooah, wooah! So, let\'s see the %1$s…</string>
+    <string name="share_response">Share this vision</string>
+    <string name="share_response_dialog_title">Message is sending…</string>
+</resources>
+
