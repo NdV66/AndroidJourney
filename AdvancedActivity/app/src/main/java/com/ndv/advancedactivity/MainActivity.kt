@@ -7,22 +7,36 @@ import android.os.Looper
 import android.widget.Button
 import android.widget.TextView
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 
 private const val TIME_UNIT = 60
 private const val SECONDS_IN_HOUR = TIME_UNIT * TIME_UNIT
 private const val DELAY_MS: Long = 1000;
 
-fun prepareTimeToDisplay(currentSeconds: Int): String {
+
+fun prepareTimeToDisplay(currentSeconds: Long): String {
     val hours = currentSeconds / SECONDS_IN_HOUR
-    val minutes = (currentSeconds % TIME_UNIT) / TIME_UNIT
+    val minutes = (currentSeconds % SECONDS_IN_HOUR) / TIME_UNIT
     val seconds = currentSeconds % TIME_UNIT
+
     return String.format("%d:%02d:%02d", hours, minutes, seconds)
 }
 
 class MainActivity : AppCompatActivity() {
-    private var currentSeconds: Int = 0;
+    private var currentSeconds: Long = 0;
     private var isTimerRunning = false;
+    private val handler = Handler(Looper.getMainLooper())
+
+    private val updateTimerRunnable = object : Runnable {
+        override fun run() {
+            updateTimer()
+            if (isTimerRunning) {
+                handler.postDelayed(this, DELAY_MS)
+                currentSeconds++
+            }
+        }
+    }
 
     private fun updateTimer() {
         val timer = findViewById<TextView>(R.id.timer)
@@ -30,17 +44,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun startTimer() {
-        val handler = Handler(Looper.getMainLooper())
-        val updateTimerRunnable = object: Runnable {
-            override fun run() {
-                updateTimer()
-                if (isTimerRunning) {
-                    handler.postDelayed(this, DELAY_MS)
-                    currentSeconds++
-                }
-            }
-        }
-
+        handler.removeCallbacks(updateTimerRunnable)
         handler.post(updateTimerRunnable)
     }
 
