@@ -97,14 +97,15 @@ class MainActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
     }
 
-    override fun onStop() {
-        super.onStop()
+    override fun onPause() {
+        super.onPause()
+        println("ON PAUSE!!!")
         wasTimerRunning = isTimerRunning
         isTimerRunning = false
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
         if (wasTimerRunning) {
             isTimerRunning = true
             startTimer()
