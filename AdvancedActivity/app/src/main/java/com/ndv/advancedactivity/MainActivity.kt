@@ -1,5 +1,6 @@
 package com.ndv.advancedactivity
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -87,6 +88,15 @@ class MainActivity : AppCompatActivity() {
         setupButton(R.id.clear) {
             isTimerRunning = false
             currentSeconds = 0
+        }
+
+        setupButton(R.id.share) {
+           val intent = Intent().apply {
+               type = "text/plain"
+               action = Intent.ACTION_SEND
+               putExtra(Intent.EXTRA_TEXT, prepareTimeToDisplay(currentSeconds))
+           }
+            startActivity(intent)
         }
     }
 
