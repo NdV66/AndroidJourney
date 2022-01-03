@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Layouts</string>
+    <string name="basic_text">Hello world!</string>
+
+    <string name="show_linear_vertical">Linear vertical</string>
+    <string name="show_linear_horizontal">Linear horizontal</string>
 </resources>
