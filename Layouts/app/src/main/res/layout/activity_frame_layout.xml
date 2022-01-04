@@ -11,9 +11,17 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_rpg_map" />
+            app:srcCompat="@drawable/rpg_map" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="@dimen/basic_space"
+            android:background="@color/design_default_color_background"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:text="@string/rpg_map_text" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

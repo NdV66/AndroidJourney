@@ -7,4 +7,6 @@
     <string name="show_linear_vertical_with_weight">Linear vertical with weight</string>
     <string name="show_linear_vertical_with_gravity">Linear vertical with gravity</string>
     <string name="show_frame_layout">Frame layout</string>
+
+    <string name="rpg_map_text">What a nice RPG map!</string>
 </resources>

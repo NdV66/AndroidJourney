@@ -41,7 +41,7 @@
             android:id="@+id/showFrameLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/show_linear_vertical_with_gravity" />
+            android:text="@string/show_frame_layout" />
 
     </LinearLayout>
 
