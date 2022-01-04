@@ -12,13 +12,6 @@
         android:orientation="vertical"
         android:padding="@dimen/basic_space">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/basic_space"
-            android:text="@string/basic_text"
-            android:textAlignment="center" />
-
         <Button
             android:id="@+id/showLinearHorizontal"
             android:layout_width="match_parent"
@@ -30,6 +23,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/show_linear_vertical" />
+
+        <Button
+            android:id="@+id/showLinearVerticalWithWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_linear_vertical_with_weight" />
+
+        <Button
+            android:id="@+id/showLinearVerticalWithGravity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_linear_vertical_with_gravity" />
+
+
+        <Button
+            android:id="@+id/showFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_linear_vertical_with_gravity" />
 
     </LinearLayout>
 

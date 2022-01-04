@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Layouts">
         <activity
+            android:name=".FrameLayout"
+            android:exported="false" />
+        <activity
+            android:name=".VerticalWithGravity"
+            android:exported="false" />
+        <activity
+            android:name=".VerticalWithWeight"
+            android:exported="false" />
+        <activity
             android:name=".LinearVertical"
             android:exported="false" />
         <activity

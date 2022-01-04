@@ -4,4 +4,7 @@
 
     <string name="show_linear_vertical">Linear vertical</string>
     <string name="show_linear_horizontal">Linear horizontal</string>
+    <string name="show_linear_vertical_with_weight">Linear vertical with weight</string>
+    <string name="show_linear_vertical_with_gravity">Linear vertical with gravity</string>
+    <string name="show_frame_layout">Frame layout</string>
 </resources>
