@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:padding="@dimen/basic_space">
 
         <Button
@@ -42,6 +43,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/show_frame_layout" />
+
+        <Button
+            android:id="@+id/showElements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_elements" />
 
     </LinearLayout>
 

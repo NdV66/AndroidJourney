@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Layouts">
         <activity
+            android:name=".GuiElements"
+            android:exported="false" />
+        <activity
             android:name=".FrameLayout"
             android:exported="false" />
         <activity

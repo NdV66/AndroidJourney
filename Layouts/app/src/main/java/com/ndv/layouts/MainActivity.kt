@@ -27,5 +27,6 @@ class MainActivity : AppCompatActivity() {
         handleButton(R.id.showLinearVerticalWithWeight) { VerticalWithWeight::class.java }
         handleButton(R.id.showLinearVerticalWithGravity) { VerticalWithGravity::class.java }
         handleButton(R.id.showFrameLayout) { FrameLayout::class.java }
+        handleButton(R.id.showElements) { GuiElements::class.java }
     }
 }
