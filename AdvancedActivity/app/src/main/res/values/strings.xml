@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AdvancedActivity</string>
+    <string name="description">Time since the Fellowship left Rivendell to destroy the Ring</string>
+    <string name="start">Start the journey</string>
+    <string name="stop">We need rest</string>
+    <string name="clear">Once again!</string>
+    <string name="share">Share time</string>
+    <string name="timer_placeholder">No measurement…</string>
+</resources>
+
