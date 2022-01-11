@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Layouts</string>
+    <string name="basic_text">Hello world!</string>
+
+    <string name="show_linear_vertical">Linear vertical</string>
+    <string name="show_linear_horizontal">Linear horizontal</string>
+    <string name="show_linear_vertical_with_weight">Linear vertical with weight</string>
+    <string name="show_linear_vertical_with_gravity">Linear vertical with gravity</string>
+    <string name="show_frame_layout">Frame layout</string>
+    <string name="show_elements">Show GUI</string>
+
+    <string name="rpg_map_text">What a nice RPG map!</string>
+
+    <string-array name="spinner_valar">
+        <item>Manwë</item>
+        <item>Ulmo</item>
+        <item>Aulë</item>
+        <item>Oromë</item>
+        <item>Mandos</item>
+        <item>Irmo</item>
+        <item>Tulkas</item>
+        <item>Melkor</item>
+    </string-array>
+</resources>

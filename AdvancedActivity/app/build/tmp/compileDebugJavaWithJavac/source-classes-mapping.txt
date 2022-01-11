@@ -1,0 +1,2 @@
+com/ndv/advancedactivity/BuildConfig.java
+ com.ndv.advancedactivity.BuildConfig
