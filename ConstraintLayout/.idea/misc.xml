@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_category.xml" value="0.5541666666666667" />
+        <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_elf_cateogry.xml" value="0.5401041666666667" />
+        <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_maia.xml" value="0.5541666666666667" />
+        <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_maia_category.xml" value="0.5541666666666667" />
         <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_main.xml" value="0.5541666666666667" />
+        <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_person.xml" value="0.3307291666666667" />
+        <entry key="..\:/repos/Android/ConstraintLayout/app/src/main/res/layout/activity_person_category.xml" value="0.5541666666666667" />
       </map>
     </option>
   </component>
