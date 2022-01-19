@@ -9,6 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/CustomAppTheme">
+
+        <activity
+            android:name=".ToolbarAction"
+            android:exported="false"
+            android:label="@string/add_stuff" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
