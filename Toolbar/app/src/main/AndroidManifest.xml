@@ -11,17 +11,19 @@
         android:theme="@style/CustomAppTheme">
         <activity
             android:name=".AddStuffActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
         <activity
             android:name=".ToolbarAction"
             android:exported="false"
             android:label="@string/add_stuff" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

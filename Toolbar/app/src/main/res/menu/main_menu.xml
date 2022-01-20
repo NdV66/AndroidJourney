@@ -3,8 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/addStuff"
-        android:icon="@drawable/ic_add_stuff"
+        android:id="@+id/shareStuff"
+        android:orderInCategory="1"
         app:showAsAction="ifRoom"
-        android:title="@string/add_stuff" />
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
+        android:title="@string/share_stuff" />
+
+    <item
+        android:id="@+id/addStuff"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_add_stuff"
+        android:title="@string/add_stuff"
+        app:showAsAction="ifRoom" />
 </menu>
