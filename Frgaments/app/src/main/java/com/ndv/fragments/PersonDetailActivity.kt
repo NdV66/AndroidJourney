@@ -13,23 +13,12 @@ class PersonDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_detail)
 
-        val person = getSelectedPerson()
-        fillPersonDetails(person)
-    }
+        val personName = intent.getStringExtra(PERSON_NAME)
+        val fragment: PersonDetailsFragment =
+            supportFragmentManager.findFragmentById(R.id.personDetailsFragment) as PersonDetailsFragment
 
-    private fun getSelectedPerson(): Person {
-        val personName =
-            intent.getStringExtra(PERSON_NAME) ?: throw Error(getString(R.string.error_empty_name))
-        return getPersonByName(personName) ?: throw Error(getString(R.string.error_no_person))
-    }
-
-    private fun fillPersonDetails(person: Person) {
-        val nameTextView = findViewById<TextView>(R.id.personName)
-        val raceTextView = findViewById<TextView>(R.id.personRace)
-        val detailsTextView = findViewById<TextView>(R.id.personDetails)
-
-        nameTextView.text = person.name
-        raceTextView.text = person.race.printableName
-        detailsTextView.text = person.description
+        if (personName != null) {
+            fragment.personName = personName
+        }
     }
 }
