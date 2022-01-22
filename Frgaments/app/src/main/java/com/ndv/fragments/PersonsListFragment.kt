@@ -24,7 +24,6 @@ class PersonsListFragment : Fragment() {
             PersonsListFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
-
                 }
             }
     }
