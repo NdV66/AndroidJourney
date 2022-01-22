@@ -1,9 +1,8 @@
 package com.ndv.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import java.lang.Error
+import androidx.appcompat.app.AppCompatActivity
 
 class PersonDetailActivity : AppCompatActivity() {
     companion object {

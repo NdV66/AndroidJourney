@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/personDetailsFragment"
+    android:name="com.ndv.fragments.PersonDetailsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/space"
-    tools:context=".PersonDetailActivity">
-
-    <TextView
-        android:id="@+id/personName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/space" />
-
-    <TextView
-        android:id="@+id/personRace"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/space" />
-
-    <TextView
-        android:id="@+id/personDetails"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+    android:layout_height="match_parent" />

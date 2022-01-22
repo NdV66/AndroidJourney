@@ -1,10 +1,10 @@
 package com.ndv.fragments
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupOnClickPersonListener() {
         val list = findViewById<ListView>(R.id.personsList)
-        list.setOnItemClickListener { parent, view, position, id ->
+        list.setOnItemClickListener { _, _, position, _ ->
             val intent = Intent(this, PersonDetailActivity::class.java)
             val person = persons[position]
 
