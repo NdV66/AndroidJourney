@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fragments</string>
+    <string name="show_details">Show details</string>
+
+    <string name="error_empty_name">No name is provided.</string>
+    <string name="error_no_person">No person with this name is provided.</string>
+</resources>
