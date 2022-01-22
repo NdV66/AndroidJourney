@@ -1,4 +1,4 @@
-package com.ndv.frgaments
+package com.ndv.fragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.ndv.frgaments
+package com.ndv.fragments
 
 enum class RACES(val printableName: String)  {
     ELF("elf")

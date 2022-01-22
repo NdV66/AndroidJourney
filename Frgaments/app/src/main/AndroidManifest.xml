@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ndv.frgaments">
+    package="com.ndv.fragments">
 
     <application
         android:allowBackup="true"
@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Frgaments">
         <activity
-            android:name=".PersonDetailActivity"
+            android:name="com.ndv.fragments.PersonDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.ndv.fragments.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

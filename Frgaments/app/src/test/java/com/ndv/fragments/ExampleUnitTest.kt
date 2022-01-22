@@ -1,4 +1,4 @@
-package com.ndv.frgaments
+package com.ndv.fragments
 
 import org.junit.Test
 
