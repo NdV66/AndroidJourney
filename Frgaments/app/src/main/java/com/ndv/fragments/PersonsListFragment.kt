@@ -1,6 +1,6 @@
 package com.ndv.fragments
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,16 +9,24 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 
+interface PersonsListFragmentListener {
+    fun onClickPerson(position: Int)
+}
 
 class PersonsListFragment : Fragment() {
-//    val personsToDisplay: Array<Person> = null
+    lateinit var personsToDisplay: Array<Person>
+    lateinit var listener: PersonsListFragmentListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_persons_list, container, false)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        listener = context as PersonsListFragmentListener
     }
 
     override fun onStart() {
@@ -29,7 +37,7 @@ class PersonsListFragment : Fragment() {
     }
 
     private fun setupPersonsList() {
-        val personsNames = persons.map { it.name }
+        val personsNames = personsToDisplay.map { it.name }
         val adapter =
             ArrayAdapter(
                 requireContext(),
@@ -45,11 +53,7 @@ class PersonsListFragment : Fragment() {
         val list = view?.findViewById<ListView>(R.id.personsList)
 
         list?.setOnItemClickListener { _, _, position, _ ->
-            val intent = Intent(requireContext(), PersonDetailActivity::class.java)
-            val person = persons[position]
-
-            intent.putExtra(PersonDetailActivity.PERSON_NAME, person.name)
-            startActivity(intent)
+            listener.onClickPerson(position)
         }
     }
 

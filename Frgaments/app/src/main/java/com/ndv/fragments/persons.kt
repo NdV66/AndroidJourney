@@ -13,6 +13,6 @@ val persons = arrayOf(
     )
 )
 
-fun getPersonByName(name: String) = persons.find { it.name == name }
+
 
 
