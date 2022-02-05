@@ -3,8 +3,9 @@ package com.ndv.fragments
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import java.lang.Error
 
-class MainActivity : AppCompatActivity(), PersonsListFragmentListener{
+class MainActivity : AppCompatActivity(), PersonsListFragmentListener, PersonDetailsFragmentListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -20,5 +21,10 @@ class MainActivity : AppCompatActivity(), PersonsListFragmentListener{
 
         intent.putExtra(PersonDetailActivity.PERSON_NAME, person.name)
         startActivity(intent)
+    }
+
+    override fun getSelectedPerson(name: String): Person {
+        val error = getString(R.string.error_no_person)
+        return persons.find { it.name == name } ?: throw Error(error)
     }
 }

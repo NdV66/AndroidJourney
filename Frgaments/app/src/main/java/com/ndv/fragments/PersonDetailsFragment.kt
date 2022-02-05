@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import java.lang.Error
 
 interface PersonDetailsFragmentListener {
     fun getSelectedPerson(name: String): Person
@@ -31,8 +32,12 @@ class PersonDetailsFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val person = listener.getSelectedPerson(personName)
-        fillPersonDetails(person)
+        try {
+            val person = listener.getSelectedPerson(personName)
+            fillPersonDetails(person)
+        } catch (err: Error) {
+            println(err)
+        }
     }
 
     private fun fillPersonDetails(person: Person) {
