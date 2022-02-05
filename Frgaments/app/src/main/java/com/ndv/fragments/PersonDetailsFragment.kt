@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import java.lang.Error
 
 interface PersonDetailsFragmentListener {
     fun getSelectedPerson(name: String): Person
 }
 
+const val PERSON_NAME_KEY = "personName"
+
 class PersonDetailsFragment : Fragment() {
-    lateinit var listener: PersonDetailsFragmentListener
     var personName = ""
+    private lateinit var listener: PersonDetailsFragmentListener
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +41,20 @@ class PersonDetailsFragment : Fragment() {
         }
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if(savedInstanceState != null) {
+            personName = savedInstanceState.getString(PERSON_NAME_KEY) ?: ""
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(PERSON_NAME_KEY, personName)
+    }
+
+    //Privates
     private fun fillPersonDetails(person: Person) {
         val nameTextView = view?.findViewById<TextView>(R.id.personName)
         val raceTextView = view?.findViewById<TextView>(R.id.personRace)

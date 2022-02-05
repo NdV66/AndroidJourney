@@ -14,9 +14,8 @@
 
         />
 
-    <fragment
-        android:id="@+id/personDetailsFragment"
-        android:name="com.ndv.fragments.PersonDetailsFragment"
+    <FrameLayout
+        android:id="@+id/personDetailsFragment_container"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3" />
