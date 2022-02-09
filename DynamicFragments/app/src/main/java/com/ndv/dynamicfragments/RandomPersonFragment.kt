@@ -55,7 +55,7 @@ class RandomPersonFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         updateRandomControllers()
-        updateCurrentNameTextView(currentName)
+        updateNamesViews(currentName)
 
         setupButton()
         mainHandler.post(updateTextTask)
@@ -75,8 +75,19 @@ class RandomPersonFragment : Fragment() {
     }
 
     private fun updateCurrentNameTextView(name: String) {
+        val stars = "*".repeat(name.length)
         val currentNameTextView = view?.findViewById<TextView>(R.id.currentName)
-        currentNameTextView?.text = name
+        currentNameTextView?.text = stars
+    }
+
+    private fun updateSelectedNameTextView(name: String) {
+        val textView = view?.findViewById<TextView>(R.id.selectedName)
+        textView?.text = name
+    }
+
+    private fun updateNamesViews(name: String) {
+        updateCurrentNameTextView(name)
+        updateSelectedNameTextView(name)
     }
 
     private fun updateCurrentName() {
@@ -97,6 +108,7 @@ class RandomPersonFragment : Fragment() {
         val selectButton = view?.findViewById<Button>(R.id.selectButton)
         selectButton?.setOnClickListener {
             mainHandler.removeCallbacks(updateTextTask)
+            updateSelectedNameTextView(currentName)
             isNameRunning = false
         }
     }

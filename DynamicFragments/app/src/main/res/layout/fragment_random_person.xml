@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space"
         android:text="@string/selected_info"
+        android:textSize="18sp"
         android:textAlignment="center" />
 
     <TextView
@@ -25,8 +26,16 @@
         android:id="@+id/selectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space"
+        android:layout_marginBottom="2dp"
         android:text="@string/select_btn" />
+
+    <TextView
+        android:id="@+id/selectedName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space"
+        android:textAlignment="center"
+        android:textSize="36sp" />
 
     <TextView
         android:layout_width="match_parent"
