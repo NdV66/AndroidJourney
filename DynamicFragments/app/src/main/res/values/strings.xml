@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">DynamicFragments</string>
+
+    <string name="select_btn">Select</string>
+    <string name="label">Click select button to select random name</string>
+    <string name="selected_info">Today you are...</string>
+</resources>
