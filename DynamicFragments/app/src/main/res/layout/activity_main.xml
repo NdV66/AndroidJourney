@@ -7,9 +7,8 @@
     android:layout_margin="@dimen/space"
     tools:context=".MainActivity">
 
-   <androidx.fragment.app.FragmentContainerView
-       android:id="@+id/randomPersonsFragment"
-       android:name="com.ndv.dynamicfragments.RandomPersonFragment"
+   <FrameLayout
+       android:id="@+id/randomPersonsFragmentContainer"
        android:layout_width="match_parent"
        android:layout_height="match_parent" />
 

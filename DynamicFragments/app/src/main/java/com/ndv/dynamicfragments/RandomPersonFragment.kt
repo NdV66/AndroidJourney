@@ -12,39 +12,79 @@ import androidx.fragment.app.Fragment
 
 
 const val DELAY_MS: Long = 200
+const val CURRENT_NAME = "CURRENT_NAME"
+const val WAS_NAME_RUNNING = "WAS_NAME_RUNNING"
+const val IS_NAME_RUNNING = "IS_NAME_RUNNING"
 
 class RandomPersonFragment : Fragment() {
-    lateinit var mainHandler: Handler
-    var currentName: String = ""
+    val mainHandler: Handler = Handler(Looper.getMainLooper())
+    private var currentName: String = ""
+    private var isNameRunning = false
+    private var wasNameRunning = true
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        if (savedInstanceState != null) {
+            currentName = savedInstanceState.getString(CURRENT_NAME) ?: ""
+            isNameRunning = savedInstanceState.getBoolean(IS_NAME_RUNNING)
+            wasNameRunning = savedInstanceState.getBoolean(WAS_NAME_RUNNING)
+        }
+    }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+
+        println(">>>>>>>>>>>>>>>>> ON VIEW $currentName")
         return inflater.inflate(R.layout.fragment_random_person, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
-        mainHandler = Handler(Looper.getMainLooper())
-        setupButton()
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putBoolean(IS_NAME_RUNNING, isNameRunning)
+        outState.putBoolean(WAS_NAME_RUNNING, wasNameRunning)
+        outState.putString(CURRENT_NAME, currentName)
     }
 
     override fun onPause() {
         super.onPause()
-        mainHandler.removeCallbacks(updateTextTask)
+        wasNameRunning = isNameRunning
+        isNameRunning = false
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (wasNameRunning) {
+            isNameRunning = true
+        }
+
+        updateCurrentNameTextView(currentName)
+
+        setupButton()
+        mainHandler.post(updateTextTask)
     }
 
     override fun onResume() {
         super.onResume()
-        mainHandler.post(updateTextTask)
+        if (wasNameRunning) {
+            isNameRunning = true
+        }
+    }
+
+    //PRIVATE
+    private fun updateCurrentNameTextView(name: String) {
+        val currentNameTextView = view?.findViewById<TextView>(R.id.currentName)
+        currentNameTextView?.text = name
     }
 
     private fun updateCurrentName() {
-        currentName = getRandomPerson()
-        val currentNameTextView = view?.findViewById<TextView>(R.id.currentName)
-        currentNameTextView?.text = currentName
+        if (isNameRunning) {
+            currentName = getRandomPerson()
+            updateCurrentNameTextView(currentName)
+        }
     }
 
     private val updateTextTask = object : Runnable {
@@ -58,8 +98,7 @@ class RandomPersonFragment : Fragment() {
         val selectButton = view?.findViewById<Button>(R.id.selectButton)
         selectButton?.setOnClickListener {
             mainHandler.removeCallbacks(updateTextTask)
-
-
+            isNameRunning = false
         }
     }
 }
