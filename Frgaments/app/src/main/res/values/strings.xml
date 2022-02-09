@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Fragments</string>
+    <string name="show_details">Show details</string>
+
+    <string name="error_empty_name">No name is provided.</string>
+    <string name="error_no_person">No person with this name is provided.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
