@@ -9,13 +9,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="@string/label"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space"
         android:text="@string/selected_info"
         android:textAlignment="center" />
@@ -26,13 +19,21 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space"
         android:textAlignment="center"
-        android:textSize="24sp" />
+        android:textSize="34sp" />
 
     <Button
         android:id="@+id/selectButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/space"
         android:text="@string/select_btn" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label"
+        android:textSize="12sp"
+        android:textAlignment="center" />
 
 
 </LinearLayout>

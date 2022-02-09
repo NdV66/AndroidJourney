@@ -11,7 +11,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 
-const val DELAY_MS: Long = 200
+const val DELAY_MS: Long = 100
 const val CURRENT_NAME = "CURRENT_NAME"
 const val WAS_NAME_RUNNING = "WAS_NAME_RUNNING"
 const val IS_NAME_RUNNING = "IS_NAME_RUNNING"
@@ -32,13 +32,10 @@ class RandomPersonFragment : Fragment() {
         }
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
-        println(">>>>>>>>>>>>>>>>> ON VIEW $currentName")
         return inflater.inflate(R.layout.fragment_random_person, container, false)
     }
 
@@ -57,10 +54,7 @@ class RandomPersonFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if (wasNameRunning) {
-            isNameRunning = true
-        }
-
+        updateRandomControllers()
         updateCurrentNameTextView(currentName)
 
         setupButton()
@@ -69,12 +63,17 @@ class RandomPersonFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        updateRandomControllers()
+    }
+
+    //PRIVATE
+
+    private fun updateRandomControllers() {
         if (wasNameRunning) {
             isNameRunning = true
         }
     }
 
-    //PRIVATE
     private fun updateCurrentNameTextView(name: String) {
         val currentNameTextView = view?.findViewById<TextView>(R.id.currentName)
         currentNameTextView?.text = name
