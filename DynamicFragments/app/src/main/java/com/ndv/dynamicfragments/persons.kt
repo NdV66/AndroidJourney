@@ -1,6 +1,6 @@
 package com.ndv.dynamicfragments
 
-val PERSONS = arrayOf("Manwë", "Varda", "Ulmo", "Yavanna", "Aulë", "Namo", "Nienna", "Oromë", "Lorien")
+val PERSONS = arrayOf("Manwë", "Varda", "Ulmo", "Yavanna", "Aulë", "Namo", "Nienna", "Oromë", "Irmo", "Nienna", "Nessa", "Tulkas")
 
 fun getRandomIndex (max: Int, min: Int  = 0): Int {
     return (min..max).random()
