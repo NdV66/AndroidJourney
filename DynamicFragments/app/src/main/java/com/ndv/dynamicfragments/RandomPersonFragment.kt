@@ -11,16 +11,17 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 
-const val DELAY_MS: Long = 100
+const val DELAY_MS: Long = 500
 const val CURRENT_NAME = "CURRENT_NAME"
 const val WAS_NAME_RUNNING = "WAS_NAME_RUNNING"
 const val IS_NAME_RUNNING = "IS_NAME_RUNNING"
+const val REPLACE_WITH_STARS = false
 
 class RandomPersonFragment : Fragment() {
     val mainHandler: Handler = Handler(Looper.getMainLooper())
     private var currentName: String = ""
     private var isNameRunning = false
-    private var wasNameRunning = true
+    private var wasNameRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,7 @@ class RandomPersonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
+
         return inflater.inflate(R.layout.fragment_random_person, container, false)
     }
 
@@ -55,10 +57,16 @@ class RandomPersonFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         updateRandomControllers()
-        updateNamesViews(currentName)
+
+        if (!wasNameRunning) {
+            updateNamesViews(currentName)
+        }
+
+        mainHandler.post(updateTextTask)
 
         setupButton()
-        mainHandler.post(updateTextTask)
+        setupStartButton()
+        setupResetButton()
     }
 
     override fun onResume() {
@@ -74,9 +82,14 @@ class RandomPersonFragment : Fragment() {
     }
 
     private fun updateCurrentNameTextView(name: String) {
-        val stars = "*".repeat(name.length)
         val currentNameTextView = view?.findViewById<TextView>(R.id.currentName)
-        currentNameTextView?.text = stars
+
+        if (REPLACE_WITH_STARS) {
+            val stars = "*".repeat(name.length)
+            currentNameTextView?.text = stars
+        } else {
+            currentNameTextView?.text = name
+        }
     }
 
     private fun updateSelectedNameTextView(name: String) {
@@ -91,7 +104,7 @@ class RandomPersonFragment : Fragment() {
 
     private fun updateCurrentName() {
         if (isNameRunning) {
-            currentName = getRandomPerson()
+            currentName = getPerson()
             updateCurrentNameTextView(currentName)
         }
     }
@@ -109,6 +122,22 @@ class RandomPersonFragment : Fragment() {
             mainHandler.removeCallbacks(updateTextTask)
             updateSelectedNameTextView(currentName)
             isNameRunning = false
+        }
+    }
+
+    private fun setupResetButton() {
+        val selectButton = view?.findViewById<Button>(R.id.resetButton)
+        selectButton?.setOnClickListener {
+            updateSelectedNameTextView("")
+            updateCurrentNameTextView("")
+            isNameRunning = false
+        }
+    }
+
+    private fun setupStartButton() {
+        val selectButton = view?.findViewById<Button>(R.id.startButton)
+        selectButton?.setOnClickListener {
+            isNameRunning = true
         }
     }
 }

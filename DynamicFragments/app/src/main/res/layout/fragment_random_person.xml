@@ -42,7 +42,22 @@
         android:layout_height="wrap_content"
         android:text="@string/label"
         android:textSize="12sp"
+        android:layout_marginBottom="10dp"
         android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="@string/start_btn" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="@string/reset_btn" />
 
 
 </LinearLayout>

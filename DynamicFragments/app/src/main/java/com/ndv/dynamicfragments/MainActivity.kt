@@ -9,14 +9,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if(savedInstanceState == null) {
-            val randomPersonFragment = RandomPersonFragment()
-            val transaction = supportFragmentManager.beginTransaction()
-
-            transaction.add(R.id.randomPersonsFragmentContainer, randomPersonFragment)
-            transaction.addToBackStack(null)
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            transaction.commit()
-        }
+//        if(savedInstanceState == null) {
+//            val randomPersonFragment = RandomPersonFragment()
+//            val transaction = supportFragmentManager.beginTransaction()
+//
+//            transaction.add(R.id.randomPersonsFragmentContainer, randomPersonFragment)
+//            transaction.addToBackStack(null)
+//            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+//            transaction.commit()
+//        }
     }
 }

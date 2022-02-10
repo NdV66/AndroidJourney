@@ -7,9 +7,15 @@
     android:layout_margin="@dimen/space"
     tools:context=".MainActivity">
 
-   <FrameLayout
-       android:id="@+id/randomPersonsFragmentContainer"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent" />
+<!--   <FrameLayout-->
+<!--       android:id="@+id/randomPersonsFragmentContainer"-->
+<!--       android:layout_width="match_parent"-->
+<!--       android:layout_height="match_parent" />-->
+
+    <fragment
+        android:id="@+id/randomPersons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.ndv.dynamicfragments.RandomPersonFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
