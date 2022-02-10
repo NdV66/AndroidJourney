@@ -67,7 +67,6 @@ class RandomPersonFragment : Fragment() {
     }
 
     //PRIVATE
-
     private fun updateRandomControllers() {
         if (wasNameRunning) {
             isNameRunning = true
