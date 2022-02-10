@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 
 
 const val DELAY_MS: Long = 100
@@ -16,7 +17,7 @@ const val CURRENT_NAME = "CURRENT_NAME"
 const val WAS_NAME_RUNNING = "WAS_NAME_RUNNING"
 const val IS_NAME_RUNNING = "IS_NAME_RUNNING"
 const val DECISION_TIME = "DECISION_TIME"
-const val REPLACE_WITH_STARS = false
+const val REPLACE_WITH_STARS = true
 
 class RandomPersonFragment : Fragment() {
     val mainHandler: Handler = Handler(Looper.getMainLooper())
@@ -66,11 +67,11 @@ class RandomPersonFragment : Fragment() {
             updateDecisionTimeTextView(decisionTimeSeconds)
         }
 
-        mainHandler.post(updateTextTask)
-
         setupButton()
         setupStartButton()
-        setupResetButton()
+        setupShowDecisionTimeButton()
+        toggleShowDecisionTimeButton()
+        toggleSelectButton()
     }
 
     override fun onResume() {
@@ -134,16 +135,9 @@ class RandomPersonFragment : Fragment() {
             mainHandler.removeCallbacks(updateTextTask)
             updateSelectedNameTextView(currentName)
             isNameRunning = false
-        }
-    }
-
-    private fun setupResetButton() {
-        val selectButton = view?.findViewById<Button>(R.id.resetButton)
-        selectButton?.setOnClickListener {
-            updateSelectedNameTextView("")
-            updateCurrentNameTextView("")
-            isNameRunning = false
-            currentName = ""
+            toggleShowDecisionTimeButton()
+            toggleStartButton()
+            toggleSelectButton()
         }
     }
 
@@ -151,6 +145,42 @@ class RandomPersonFragment : Fragment() {
         val selectButton = view?.findViewById<Button>(R.id.startButton)
         selectButton?.setOnClickListener {
             isNameRunning = true
+            toggleSelectButton()
+            mainHandler.post(updateTextTask)
         }
+    }
+
+    private fun setupShowDecisionTimeButton() {
+        val button = view?.findViewById<Button>(R.id.showDecisionTimeButton)
+        button?.setOnClickListener {
+            val fragment = DecisionTimeFragment()
+            fragment.decisionTime = decisionTimeSeconds
+            val transaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.decisionTimeContainer, fragment)
+            transaction.addToBackStack(null)
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            transaction.commit()
+        }
+    }
+
+    private fun toggleButton(id: Int) {
+        val button = view?.findViewById<Button>(id)
+
+        if(button !=null) {
+            button.isEnabled = !button.isEnabled
+            button.isClickable = !button.isClickable
+        }
+    }
+
+    private fun toggleShowDecisionTimeButton() {
+        toggleButton(R.id.showDecisionTimeButton)
+    }
+
+    private fun toggleSelectButton() {
+        toggleButton(R.id.selectButton)
+    }
+
+    private fun toggleStartButton() {
+        toggleButton(R.id.startButton)
     }
 }

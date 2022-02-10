@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/space"
         android:text="@string/selected_info"
-        android:textSize="18sp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/currentName"
@@ -37,22 +37,6 @@
         android:textAlignment="center"
         android:textSize="36sp" />
 
-    <TextView
-        android:id="@+id/time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/space"
-        android:textAlignment="center"
-        android:textSize="24sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/label"
-        android:textSize="12sp"
-        android:layout_marginBottom="10dp"
-        android:textAlignment="center" />
-
     <Button
         android:id="@+id/startButton"
         android:layout_width="match_parent"
@@ -61,11 +45,16 @@
         android:text="@string/start_btn" />
 
     <Button
-        android:id="@+id/resetButton"
+        android:id="@+id/showDecisionTimeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:text="@string/reset_btn" />
+        android:text="@string/show_decision_time" />
+
+    <FrameLayout
+        android:id="@+id/decisionTimeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/repos/Android/DynamicFragments/app/src/main/res/layout/activity_main.xml" value="0.3125" />
+        <entry key="..\:/repos/Android/DynamicFragments/app/src/main/res/layout/fragment_decision_time.xml" value="0.39895833333333336" />
         <entry key="..\:/repos/Android/DynamicFragments/app/src/main/res/layout/fragment_random_person.xml" value="0.47146739130434784" />
       </map>
     </option>
