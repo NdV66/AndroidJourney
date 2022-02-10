@@ -1,5 +1,6 @@
 package com.ndv.dynamicfragments
 
+
 val PERSONS = arrayOf(
     "Manwë (1)",
     "Varda (2)",
@@ -12,18 +13,16 @@ val PERSONS = arrayOf(
     "Irmo (9)",
     "Nienna (10)",
     "Nessa (11)",
-    "Tulkas (12)")
+    "Tulkas (12)",
+    "Vana (13)",
+    "Este (14)")
 
-
-var lastPosition = -1
+fun getRandomIndex(max: Int, min: Int = 0): Int {
+    return (min..max).random()
+}
 
 fun getPerson(persons: Array<String> = PERSONS): String {
     val max = persons.size - 1
-    lastPosition += 1
-
-    if (lastPosition == max) {
-        lastPosition = 0
-    }
-
-    return persons[lastPosition]
+    val position = getRandomIndex(max)
+    return persons[position]
 }

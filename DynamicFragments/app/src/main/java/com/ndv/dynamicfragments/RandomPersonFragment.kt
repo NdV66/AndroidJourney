@@ -11,10 +11,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 
-const val DELAY_MS: Long = 500
+const val DELAY_MS: Long = 100
 const val CURRENT_NAME = "CURRENT_NAME"
 const val WAS_NAME_RUNNING = "WAS_NAME_RUNNING"
 const val IS_NAME_RUNNING = "IS_NAME_RUNNING"
+const val DECISION_TIME = "DECISION_TIME"
 const val REPLACE_WITH_STARS = false
 
 class RandomPersonFragment : Fragment() {
@@ -22,6 +23,7 @@ class RandomPersonFragment : Fragment() {
     private var currentName: String = ""
     private var isNameRunning = false
     private var wasNameRunning = false
+    private var decisionTimeSeconds = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class RandomPersonFragment : Fragment() {
             currentName = savedInstanceState.getString(CURRENT_NAME) ?: ""
             isNameRunning = savedInstanceState.getBoolean(IS_NAME_RUNNING)
             wasNameRunning = savedInstanceState.getBoolean(WAS_NAME_RUNNING)
+            decisionTimeSeconds = savedInstanceState.getInt(DECISION_TIME)
         }
     }
 
@@ -37,7 +40,6 @@ class RandomPersonFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
         return inflater.inflate(R.layout.fragment_random_person, container, false)
     }
 
@@ -46,6 +48,7 @@ class RandomPersonFragment : Fragment() {
         outState.putBoolean(IS_NAME_RUNNING, isNameRunning)
         outState.putBoolean(WAS_NAME_RUNNING, wasNameRunning)
         outState.putString(CURRENT_NAME, currentName)
+        outState.putInt(DECISION_TIME, decisionTimeSeconds)
     }
 
     override fun onPause() {
@@ -56,10 +59,11 @@ class RandomPersonFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        updateRandomControllers()
+        updateRunningControllers()
 
         if (!wasNameRunning) {
             updateNamesViews(currentName)
+            updateDecisionTimeTextView(decisionTimeSeconds)
         }
 
         mainHandler.post(updateTextTask)
@@ -71,11 +75,11 @@ class RandomPersonFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        updateRandomControllers()
+        updateRunningControllers()
     }
 
     //PRIVATE
-    private fun updateRandomControllers() {
+    private fun updateRunningControllers() {
         if (wasNameRunning) {
             isNameRunning = true
         }
@@ -92,6 +96,11 @@ class RandomPersonFragment : Fragment() {
         }
     }
 
+    private fun updateDecisionTimeTextView(time: Int) {
+        val textView = view?.findViewById<TextView>(R.id.time)
+        textView?.text = "$time"
+    }
+
     private fun updateSelectedNameTextView(name: String) {
         val textView = view?.findViewById<TextView>(R.id.selectedName)
         textView?.text = name
@@ -102,16 +111,19 @@ class RandomPersonFragment : Fragment() {
         updateSelectedNameTextView(name)
     }
 
-    private fun updateCurrentName() {
+    private fun updateTextViewsIfRunning() {
         if (isNameRunning) {
+            decisionTimeSeconds++
             currentName = getPerson()
+
             updateCurrentNameTextView(currentName)
+            updateDecisionTimeTextView(decisionTimeSeconds)
         }
     }
 
     private val updateTextTask = object : Runnable {
         override fun run() {
-            updateCurrentName()
+            updateTextViewsIfRunning()
             mainHandler.postDelayed(this, DELAY_MS)
         }
     }
@@ -131,6 +143,7 @@ class RandomPersonFragment : Fragment() {
             updateSelectedNameTextView("")
             updateCurrentNameTextView("")
             isNameRunning = false
+            currentName = ""
         }
     }
 

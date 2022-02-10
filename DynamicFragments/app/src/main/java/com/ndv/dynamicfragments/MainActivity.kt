@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 //            val transaction = supportFragmentManager.beginTransaction()
 //
 //            transaction.add(R.id.randomPersonsFragmentContainer, randomPersonFragment)
-//            transaction.addToBackStack(null)
+//            //transaction.addToBackStack(null)
 //            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 //            transaction.commit()
 //        }
