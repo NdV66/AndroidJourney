@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">DynamicFragments</string>
+
+    <string name="select_btn">Select</string>
+    <string name="reset_btn">Reset</string>
+    <string name="start_btn">Start</string>
+    <string name="label">Click select button to select random name</string>
+    <string name="selected_info">Today you are...</string>
+    <string name="show_decision_time">Show decision time</string>
+    <string name="decision_time_label">Your decision time is... (in seconds)</string>
+</resources>
