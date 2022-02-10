@@ -155,8 +155,9 @@ class RandomPersonFragment : Fragment() {
         button?.setOnClickListener {
             val fragment = DecisionTimeFragment()
             fragment.decisionTime = decisionTimeSeconds
-            val transaction = parentFragmentManager.beginTransaction()
-            transaction.replace(R.id.decisionTimeContainer, fragment)
+//            val transaction = parentFragmentManager.beginTransaction()
+            val transaction = childFragmentManager.beginTransaction()
+            transaction.add(R.id.decisionTimeContainer, fragment)
             transaction.addToBackStack(null)
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             transaction.commit()
@@ -166,7 +167,7 @@ class RandomPersonFragment : Fragment() {
     private fun toggleButton(id: Int) {
         val button = view?.findViewById<Button>(id)
 
-        if(button !=null) {
+        if (button != null) {
             button.isEnabled = !button.isEnabled
             button.isClickable = !button.isClickable
         }

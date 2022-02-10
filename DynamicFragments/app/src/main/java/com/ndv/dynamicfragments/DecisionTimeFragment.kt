@@ -22,5 +22,4 @@ class DecisionTimeFragment : Fragment() {
         val decisionTimeTextView = view?.findViewById<TextView>(R.id.time)
         decisionTimeTextView?.text = "$decisionTime"
     }
-
 }
