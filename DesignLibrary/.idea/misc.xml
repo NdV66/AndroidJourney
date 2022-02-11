@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/activity_main.xml" value="0.47146739130434784" />
+        <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/activity_main.xml" value="0.3496932515337423" />
         <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/fragment_maia.xml" value="0.2695035460992908" />
-        <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/fragment_start.xml" value="0.47146739130434784" />
+        <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/fragment_start.xml" value="0.24193022497554614" />
+        <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/fragment_text_with_image.xml" value="0.38645833333333335" />
         <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/fragment_valar.xml" value="0.22056159420289856" />
         <entry key="..\:/repos/Android/DesignLibrary/app/src/main/res/layout/fragment_valar_list.xml" value="0.47146739130434784" />
       </map>
