@@ -16,4 +16,20 @@ val VALAR = arrayOf(
     "Vana",
     "Este")
 
-val MAIA = arrayOf("Mairon", "Olorin", "Curumo")
+val MAIA = arrayOf(
+    "Mairon",
+    "Olorin",
+    "Curumo",
+    "Arien",
+    "Aiwendil",
+    "Alatar",
+    "Eönwë",
+    "Gothmog",
+    "Ilmarë",
+    "Melian",
+    "Ossë",
+    "Pallando",
+    "Salmar",
+    "Tilion",
+    "Uinen"
+)

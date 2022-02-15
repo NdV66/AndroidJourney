@@ -20,5 +20,5 @@
         android:layout_margin="@dimen/space"
         android:padding="@dimen/space"
         android:text="@string/placeholder"
-        android:textColor="@android:color/holo_blue_bright" />
+        android:textColor="?attr/colorAccent" />
 </FrameLayout>
