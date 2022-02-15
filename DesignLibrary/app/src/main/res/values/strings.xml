@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">DesignLibrary</string>
+    <string name="start">Start</string>
+
+    <string name="start_tab">Start</string>
+    <string name="maia_tab">Maia</string>
+    <string name="valar_tab">Valar</string>
+
+    <string name="placeholder">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae elit magna. Vestibulum ac orci ante.
+        Fusce eu accumsan elit. Vivamus mauris urna, fringilla id tortor sed, mollis rutrum sapien.
+        Duis dolor augue, cursus quis nunc non, hendrerit maximus velit. Maecenas ultricies eleifend aliquet.
+        Quisque semper dapibus dictum. Donec aliquet quis orci ac euismod. Duis fermentum elit sit amet porta tincidunt.
+        Pellentesque convallis sapien sed est scelerisque fringilla. Cras mattis felis eget felis consectetur posuere.
+        Integer maximus molestie lectus. Maecenas sodales facilisis libero at vulputate. Cras vitae molestie ipsum.
+    </string>
+
+    <string name="hello">Hello there!</string>
+    <string name="action">Action</string>
+</resources>
