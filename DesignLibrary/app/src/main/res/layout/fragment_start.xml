@@ -6,35 +6,25 @@
     android:orientation="vertical"
     tools:context=".StartFragment">
 
-    <!--    <Toolbar-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"/>-->
-
-
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_margin="@dimen/space"
+        android:elegantTextHeight="true"
+        android:textSize="@dimen/text_size"
+        android:text="@string/placeholder" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space"
-            android:text="@string/placeholder" />
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/startTextWithImageFragment"
+        android:name="com.ndv.designlibrary.TextWithImageFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/startTextWithImageFragment"
-            android:name="com.ndv.designlibrary.TextWithImageFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/space"
-            android:text="@string/placeholder" />
-
-    </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space"
+        android:textSize="@dimen/text_size"
+        android:text="@string/placeholder" />
 
 </LinearLayout>
