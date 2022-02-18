@@ -14,11 +14,13 @@ class PersonDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_person_details)
 
-        val personName = intent.extras!!.getString(PERSON_NAME)!!
-        val person = getPersonByName(personName, VALAR)!!
+        val personName = intent.extras?.getString(PERSON_NAME)
 
-        setupImage(person.imageId)
-        setupName(person.name)
+        if (personName != null) {
+            val person = getPersonByName(personName, VALAR)!!
+            setupImage(person.imageId)
+            setupName(person.name)
+        }
     }
 
     private fun setupImage(imageId: Int) {

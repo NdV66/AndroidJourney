@@ -14,7 +14,14 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val cardView = view
 }
 
-class PersonRecyclerAdapter(private val persons: Array<Person>) :
+interface IPersonRecyclerAdapterListener {
+    fun onClick(position: Int)
+}
+
+class PersonRecyclerAdapter(
+    private val persons: Array<Person>,
+    private val listener: IPersonRecyclerAdapterListener,
+) :
     RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -31,6 +38,8 @@ class PersonRecyclerAdapter(private val persons: Array<Person>) :
 
         viewHolder.description.text = person.name
         viewHolder.avatar.setImageDrawable(drawableImage)
+
+        viewHolder.cardView.setOnClickListener { listener.onClick(position) }
     }
 
     override fun getItemCount() = persons.size
