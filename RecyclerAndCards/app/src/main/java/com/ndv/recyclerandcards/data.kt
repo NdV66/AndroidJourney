@@ -16,3 +16,10 @@ val VALAR = arrayOf(
     Person("Vana"),
     Person("Este"))
 
+val getPersonByName =
+    {
+            name: String,
+            persons: Array<Person>,
+        ->
+        persons.find { it -> it.name == name }
+    }
