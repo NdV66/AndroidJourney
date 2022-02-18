@@ -14,7 +14,6 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     val cardView = view
 }
 
-
 class PersonRecyclerAdapter(private val persons: Array<Person>) :
     RecyclerView.Adapter<ViewHolder>() {
 
@@ -34,6 +33,5 @@ class PersonRecyclerAdapter(private val persons: Array<Person>) :
         viewHolder.avatar.setImageDrawable(drawableImage)
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = persons.size
 }
