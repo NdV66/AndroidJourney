@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RecyclerAndCards</string>
+    <string name="hello">Hello there!</string>
+</resources>
