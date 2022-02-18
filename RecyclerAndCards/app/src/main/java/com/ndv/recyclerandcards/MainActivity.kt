@@ -11,7 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 
-class CustomAdapter(private val captions: Array<String>, private val imageIds: Array<Int>) :
+class CustomAdapter(private val persons: Array<Person>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -28,15 +28,16 @@ class CustomAdapter(private val captions: Array<String>, private val imageIds: A
 
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
+        val person =  persons[position]
         val cardViewContext = viewHolder.cardView.context
-        val drawableImage = ContextCompat.getDrawable(cardViewContext, imageIds[position])
+        val drawableImage = ContextCompat.getDrawable(cardViewContext, person.imageId)
 
-        viewHolder.description.text = captions[position]
+        viewHolder.description.text = person.name
         viewHolder.avatar.setImageDrawable(drawableImage)
     }
 
     // Return the size of your dataset (invoked by the layout manager)
-    override fun getItemCount() = captions.size
+    override fun getItemCount() = persons.size
 }
 
 
