@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NavigationItems</string>
     <string name="valar_title">Valar names</string>
-    <string name="maia_title">Valar names</string>
+    <string name="maia_title">Maia names</string>
 
     <string name="help_title">Help</string>
     <string name="elves_title">Elves names</string>
