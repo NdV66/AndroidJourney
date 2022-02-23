@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">sqlite</string>
+
+    <string name="info">Hello SQLite!</string>
+    <string name="read">read</string>
+    <string name="save">save</string>
+</resources>
