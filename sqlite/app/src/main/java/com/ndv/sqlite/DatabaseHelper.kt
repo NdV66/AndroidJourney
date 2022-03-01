@@ -10,7 +10,7 @@ const val DATABASE_VERSION = 1
 
 const val TABLE_NAME = "PERSON"
 const val NAME_COL = "NAME"
-const val DESCRIPTION_COL = "NAME"
+const val DESCRIPTION_COL = "DESCRIPTION"
 
 val INIT_PERSONS = arrayOf(
     Person("Irmo", "One of the Valar. He lives in Lorien."),
