@@ -23,6 +23,26 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(
     null,
     DATABASE_VERSION
 ) {
+
+    companion object {
+        fun updatePersonById(db: SQLiteDatabase, id: String, name: String, description: String) {
+            val values = ContentValues()
+            values.put(DESCRIPTION_COL, description)
+            values.put(NAME_COL, name)
+
+            db.update(TABLE_NAME,
+                values,
+                "_id = ?",
+                arrayOf(id))
+        }
+
+        fun removePersonById(db: SQLiteDatabase, id: Int,) {
+            db.delete(TABLE_NAME,
+                "_id = ?",
+                arrayOf(id.toString()))
+        }
+    }
+
     override fun onCreate(db: SQLiteDatabase?) {
         createDatabase(db)
     }
@@ -38,22 +58,6 @@ class DatabaseHelper(private val context: Context) : SQLiteOpenHelper(
         personValues.put(NAME_COL, person.name)
         personValues.put(DESCRIPTION_COL, person.description)
         db.insert(TABLE_NAME, null, personValues)
-    }
-
-    fun updateDescriptionById(db: SQLiteDatabase, id: Int,) {
-        db.delete(TABLE_NAME,
-            "_id = ?",
-            arrayOf(id.toString()))
-    }
-
-    fun removePersonById(db: SQLiteDatabase, name: String, description: String) {
-        val values = ContentValues()
-        values.put(DESCRIPTION_COL, description)
-
-        db.update(TABLE_NAME,
-            values,
-            "NAME_COL = ?",
-            arrayOf(name))
     }
 
     private fun createDatabase(db: SQLiteDatabase?) {

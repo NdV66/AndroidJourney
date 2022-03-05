@@ -1,5 +1,6 @@
 package com.ndv.sqlite
 
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteException
 import android.os.Bundle
@@ -22,12 +23,28 @@ class MainActivity : AppCompatActivity() {
         } catch (e: SQLiteException) {
             handleError()
         }
+
+        setupEditButton()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         namesCursor.close()
         db.close()
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+
+        val newCursor = prepareNamesCursor()
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        val adapter = spinner.adapter as CursorAdapter
+        val prevCursor = adapter.swapCursor(newCursor)
+        prevCursor.close()
+        namesCursor = newCursor
+
+        val cursor = spinner.selectedItem as Cursor
+        onSelectName(cursor);
     }
 
 
@@ -75,6 +92,11 @@ class MainActivity : AppCompatActivity() {
         return description
     }
 
+    private fun onSelectName(cursor: Cursor) {
+        val selectedName = cursor.getString(1)
+        val description = getDescriptionByName(selectedName)
+        setText(description)
+    }
 
     private fun setupSpinner() {
         val spinner = findViewById<Spinner>(R.id.spinner)
@@ -94,14 +116,24 @@ class MainActivity : AppCompatActivity() {
                 position: Int,
                 id: Long,
             ) {
-                println(id)
                 val cursor = spinner.selectedItem as Cursor
-                val selectedName = cursor.getString(1)
-                val description = getDescriptionByName(selectedName)
-                setText(description)
+                println(">>>>>>>>>>>>>>>>>> ${cursor.getString(1)}")
+                onSelectName(cursor)
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
+        }
+    }
+
+    private fun setupEditButton() {
+        val spinner = findViewById<Spinner>(R.id.spinner)
+        val button = findViewById<Button>(R.id.editButton)
+
+        button.setOnClickListener {
+            val cursor = spinner.selectedItem as Cursor
+            val intent = Intent(this, EditActivity::class.java)
+            intent.putExtra(PERSON_ID, cursor.getString(0))
+            startActivity(intent)
         }
     }
 }

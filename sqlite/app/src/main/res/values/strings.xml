@@ -1,9 +1,7 @@
 <resources>
     <string name="app_name">sqlite</string>
-
     <string name="info">Select name to see the description</string>
-    <string name="read">read</string>
     <string name="save">save</string>
-
+    <string name="edit">edit</string>
     <string name="databaseError">Database is not available</string>
 </resources>
