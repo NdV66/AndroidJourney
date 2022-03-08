@@ -2,11 +2,13 @@ package com.ndv.sqlite
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteException
+import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.loader.content.AsyncTaskLoader
 
 const val PERSON_ID = "PERSON_ID"
 
@@ -63,7 +65,6 @@ class EditActivity : AppCompatActivity() {
         personCursor.close()
     }
 
-
     private fun setupSaveButton() {
         val saveButton = findViewById<Button>(R.id.saveButton)
         val nameText = findViewById<EditText>(R.id.nameText)
@@ -79,5 +80,6 @@ class EditActivity : AppCompatActivity() {
             onBackPressed()
         }
     }
+
 
 }

@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable background
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+id contentFrame
+id drawerLayout
+id help
+id maia
+id navView
+id toolbar
+id valar
+layout activity_help
+layout activity_main
+layout fragment_maia
+layout fragment_valar
+layout navbar_header
+layout toolbar_main
+menu navbar_menu
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string close
+string elves_title
+string help_title
+string maia_title
+string open
+string valar_title
+style AppTheme
+style Theme.NavigationItems

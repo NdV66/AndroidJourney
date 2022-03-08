@@ -117,7 +117,6 @@ class MainActivity : AppCompatActivity() {
                 id: Long,
             ) {
                 val cursor = spinner.selectedItem as Cursor
-                println(">>>>>>>>>>>>>>>>>> ${cursor.getString(1)}")
                 onSelectName(cursor)
             }
 
