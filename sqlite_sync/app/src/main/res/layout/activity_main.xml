@@ -31,11 +31,4 @@
         android:layout_marginTop="32dp"
         android:text="@string/edit" />
 
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/add" />
-
 </LinearLayout>
