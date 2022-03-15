@@ -9,9 +9,9 @@ const val DESCRIPTION_COL = "description"
 
 @Entity(tableName = PERSON_TABLE)
 class Person(
-    @PrimaryKey(autoGenerate = true) val _id: Int,
     @ColumnInfo(name = NAME_COL) val name: String,
     @ColumnInfo(name = DESCRIPTION_COL) val description: String,
+    @PrimaryKey(autoGenerate = true) val _id: Long= 0,
 )
 
 @Dao

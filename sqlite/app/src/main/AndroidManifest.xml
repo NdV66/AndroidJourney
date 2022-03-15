@@ -3,6 +3,7 @@
     package="com.ndv.sqlite">
 
     <application
+        android:name=".PersonsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
