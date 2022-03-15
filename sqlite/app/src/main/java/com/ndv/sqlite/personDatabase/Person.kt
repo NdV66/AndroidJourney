@@ -9,10 +9,14 @@ const val DESCRIPTION_COL = "description"
 
 @Entity(tableName = PERSON_TABLE)
 class Person(
+    @PrimaryKey
     @ColumnInfo(name = NAME_COL) val name: String,
     @ColumnInfo(name = DESCRIPTION_COL) val description: String,
-    @PrimaryKey(autoGenerate = true) val _id: Long= 0,
-)
+) {
+    override fun toString(): String {
+        return name
+    }
+}
 
 @Dao
 interface PersonDao {
@@ -20,7 +24,7 @@ interface PersonDao {
     fun getAlphabetizedPersons(): Flow<List<Person>>
 
     @Query("SELECT * FROM $PERSON_TABLE WHERE NAME = :name")
-    fun getPersonByName(name: String): Flow<Person>
+    suspend fun getPersonByName(name: String): Person
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(person: Person)
@@ -30,4 +34,8 @@ interface PersonDao {
 
     @Insert
     fun insertAll(vararg persons: Person)
+
+    @Update
+    suspend fun updatePersons(vararg persons: Person)
+
 }

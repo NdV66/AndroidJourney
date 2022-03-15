@@ -11,9 +11,14 @@ class PersonViewModel(private val repository: PersonRepository) : ViewModel() {
         repository.insert(person)
     }
 
-    fun getPersonByName(name: String) = viewModelScope.launch {
-        repository.getPersonByName(name)
+    fun updatePerson(person: Person) = viewModelScope.launch {
+        repository.updatePerson(person)
     }
+
+    suspend fun getPersonByName(name: String): Person {
+        return repository.getPersonByName(name)
+    }
+
 }
 
 class PersonViewModelFactory(private val repository: PersonRepository) : ViewModelProvider.Factory {

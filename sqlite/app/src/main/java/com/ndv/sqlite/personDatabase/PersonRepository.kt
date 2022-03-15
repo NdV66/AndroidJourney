@@ -12,8 +12,15 @@ class PersonRepository(private val personDao: PersonDao) {
         personDao.insert(person)
     }
 
+    @Suppress("RedundantSuspendModifier")
     @WorkerThread
-    suspend fun getPersonByName(name: String) {
-        personDao.getPersonByName(name)
+    suspend fun getPersonByName(name: String): Person {
+       return personDao.getPersonByName(name)
+    }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun updatePerson(person: Person) {
+         personDao.updatePersons(person)
     }
 }
