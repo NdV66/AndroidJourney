@@ -1,7 +1,7 @@
 package com.ndv.sqlite
 
 import android.os.Bundle
-import android.widget.Button
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -27,13 +27,13 @@ class EditActivity : AppCompatActivity() {
             val person = personViewModel.getPersonByName(personName)
             setupFragment(person)
         }
-
     }
 
     private fun prepareListener(): IPersonFieldsFragmentListener {
-        return IPersonFieldsFragmentListener {person: Person ->
+        return IPersonFieldsFragmentListener { person: Person ->
             personViewModel.updatePerson(person)
             onBackPressed()
+            showToast(getString(R.string.edit_done))
         }
     }
 
@@ -47,5 +47,10 @@ class EditActivity : AppCompatActivity() {
         transaction.add(R.id.editPersonFragment, fragment)
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         transaction.commit()
+    }
+
+    private fun showToast(text: String) {
+        val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }

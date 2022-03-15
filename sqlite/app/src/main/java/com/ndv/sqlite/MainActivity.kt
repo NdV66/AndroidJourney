@@ -86,7 +86,13 @@ class MainActivity : AppCompatActivity() {
                 val personName = spinner.selectedItem.toString()
                 val person = personViewModel.getPersonByName(personName)
                 personViewModel.deletePerson(person)
+                showToast(getString(R.string.delete_done))
             }
         }
+    }
+
+    private fun showToast(text: String) {
+        val toast = Toast.makeText(this, text, Toast.LENGTH_SHORT)
+        toast.show()
     }
 }

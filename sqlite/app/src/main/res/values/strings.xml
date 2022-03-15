@@ -6,4 +6,7 @@
     <string name="add">add</string>
     <string name="delete">delete</string>
     <string name="databaseError">Database is not available</string>
+    <string name="delete_done">Element is removed!</string>
+    <string name="add_done">Element is added!</string>
+    <string name="edit_done">Element is updated!</string>
 </resources>
