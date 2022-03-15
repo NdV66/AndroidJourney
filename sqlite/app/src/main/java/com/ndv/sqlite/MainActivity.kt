@@ -13,6 +13,7 @@ import kotlinx.coroutines.runBlocking
 
 
 class MainActivity : AppCompatActivity() {
+    lateinit var spinner: Spinner
     private val personViewModel: PersonViewModel by viewModels {
         PersonViewModelFactory((application as PersonsApplication).repository)
     }
@@ -21,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        spinner = findViewById(R.id.spinner)
+
         personViewModel.allPersons.observe(this) {
             setSpinnerAdapter(it)
         }
@@ -28,17 +31,15 @@ class MainActivity : AppCompatActivity() {
         setupEditButton()
         setupAddButton()
         setupSpinner()
+        setupDeleteButton()
     }
 
     private fun setSpinnerAdapter(persons: List<Person>) {
-        val spinner = findViewById<Spinner>(R.id.spinner)
         spinner.adapter =
             ArrayAdapter(baseContext, android.R.layout.simple_list_item_1, persons)
     }
 
-
     private fun setupSpinner() {
-        val spinner = findViewById<Spinner>(R.id.spinner)
         val description = findViewById<TextView>(R.id.text)
 
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -57,13 +58,10 @@ class MainActivity : AppCompatActivity() {
 
             override fun onNothingSelected(parent: AdapterView<*>) {}
         }
-
     }
 
     private fun setupEditButton() {
-        val spinner = findViewById<Spinner>(R.id.spinner)
         val button = findViewById<Button>(R.id.editButton)
-
 
         button.setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
@@ -78,6 +76,17 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             val intent = Intent(this, AddActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun setupDeleteButton() {
+        val button = findViewById<Button>(R.id.deleteButton)
+        button.setOnClickListener {
+            runBlocking {
+                val personName = spinner.selectedItem.toString()
+                val person = personViewModel.getPersonByName(personName)
+                personViewModel.deletePerson(person)
+            }
         }
     }
 }

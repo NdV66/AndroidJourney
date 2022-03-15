@@ -23,4 +23,10 @@ class PersonRepository(private val personDao: PersonDao) {
     suspend fun updatePerson(person: Person) {
          personDao.updatePersons(person)
     }
+
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun deletePerson(person: Person) {
+        personDao.deletePersons(person)
+    }
 }

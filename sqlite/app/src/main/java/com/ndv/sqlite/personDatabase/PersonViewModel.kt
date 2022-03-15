@@ -15,6 +15,10 @@ class PersonViewModel(private val repository: PersonRepository) : ViewModel() {
         repository.updatePerson(person)
     }
 
+    fun deletePerson(person: Person) = viewModelScope.launch {
+        repository.deletePerson(person)
+    }
+
     suspend fun getPersonByName(name: String): Person {
         return repository.getPersonByName(name)
     }

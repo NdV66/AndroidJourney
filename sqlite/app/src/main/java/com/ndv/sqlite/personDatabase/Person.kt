@@ -32,6 +32,9 @@ interface PersonDao {
     @Query("DELETE FROM $PERSON_TABLE")
     suspend fun deleteAll()
 
+    @Delete
+    suspend fun deletePersons(vararg persons: Person)
+
     @Insert
     fun insertAll(vararg persons: Person)
 

@@ -1,6 +1,7 @@
 package com.ndv.sqlite
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentTransaction
@@ -26,6 +27,7 @@ class EditActivity : AppCompatActivity() {
             val person = personViewModel.getPersonByName(personName)
             setupFragment(person)
         }
+
     }
 
     private fun prepareListener(): IPersonFieldsFragmentListener {
