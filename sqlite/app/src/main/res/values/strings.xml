@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">sqlite</string>
+    <string name="info">Select name to see the description</string>
+    <string name="save">save</string>
+    <string name="edit">edit</string>
+    <string name="add">add</string>
+    <string name="delete">delete</string>
+    <string name="databaseError">Database is not available</string>
+    <string name="delete_done">Element is removed!</string>
+    <string name="add_done">Element is added!</string>
+    <string name="edit_done">Element is updated!</string>
+</resources>
