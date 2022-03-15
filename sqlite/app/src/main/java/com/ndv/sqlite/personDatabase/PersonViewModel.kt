@@ -1,7 +1,6 @@
 package com.ndv.sqlite.personDatabase
 
 import androidx.lifecycle.*
-import com.ndv.sqlite.Person
 import kotlinx.coroutines.launch
 
 
@@ -11,9 +10,13 @@ class PersonViewModel(private val repository: PersonRepository) : ViewModel() {
     fun insert(person: Person) = viewModelScope.launch {
         repository.insert(person)
     }
+
+    fun getPersonByName(name: String) = viewModelScope.launch {
+        repository.getPersonByName(name)
+    }
 }
 
-class WordViewModelFactory(private val repository: PersonRepository) : ViewModelProvider.Factory {
+class PersonViewModelFactory(private val repository: PersonRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PersonViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

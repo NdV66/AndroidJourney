@@ -2,9 +2,17 @@ package com.ndv.sqlite
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.fragment.app.FragmentTransaction
+import com.ndv.sqlite.personDatabase.Person
+import com.ndv.sqlite.personDatabase.PersonViewModel
+import com.ndv.sqlite.personDatabase.PersonViewModelFactory
 
 class AddActivity : AppCompatActivity() {
+    private val personViewModel: PersonViewModel by viewModels {
+        PersonViewModelFactory((application as PersonsApplication).repository)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
@@ -14,7 +22,7 @@ class AddActivity : AppCompatActivity() {
 
     private fun prepareListener(): IPersonFieldsFragmentListener {
         return IPersonFieldsFragmentListener { name: String, description: String ->
-            println(">> kliklem add $name $description")
+            personViewModel.insert(Person(name, description))
             onBackPressed()
         }
     }

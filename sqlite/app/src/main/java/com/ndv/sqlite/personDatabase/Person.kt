@@ -1,4 +1,4 @@
-package com.ndv.sqlite
+package com.ndv.sqlite.personDatabase
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
@@ -19,9 +19,15 @@ interface PersonDao {
     @Query("SELECT * FROM $PERSON_TABLE ORDER BY $NAME_COL ASC")
     fun getAlphabetizedPersons(): Flow<List<Person>>
 
+    @Query("SELECT * FROM $PERSON_TABLE WHERE NAME = :name")
+    fun getPersonByName(name: String): Flow<Person>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(person: Person)
 
     @Query("DELETE FROM $PERSON_TABLE")
     suspend fun deleteAll()
+
+    @Insert
+    fun insertAll(vararg persons: Person)
 }

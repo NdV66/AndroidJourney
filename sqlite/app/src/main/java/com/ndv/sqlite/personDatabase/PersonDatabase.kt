@@ -5,8 +5,6 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.ndv.sqlite.Person
-import com.ndv.sqlite.PersonDao
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -29,14 +27,14 @@ abstract class PersonRoomDatabase : RoomDatabase() {
                     val personDao = database.personDao()
                     personDao.deleteAll()
 
-                    val person = Person(name = "Irmo", description = "Lord of the Lorien Garden")
-                    personDao.insert(person)
-
+                    personDao.insertAll(
+                        Person(name = "Namo", description = "Lord of the Mandos"),
+                        Person(name = "Irmo", description = "Lord of the Lorien")
+                    )
                 }
             }
         }
     }
-
 
     companion object {
         @Volatile

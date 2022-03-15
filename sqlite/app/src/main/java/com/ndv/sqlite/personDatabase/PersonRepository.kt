@@ -1,8 +1,6 @@
 package com.ndv.sqlite.personDatabase
 
 import androidx.annotation.WorkerThread
-import com.ndv.sqlite.Person
-import com.ndv.sqlite.PersonDao
 import kotlinx.coroutines.flow.Flow
 
 class PersonRepository(private val personDao: PersonDao) {
@@ -12,5 +10,10 @@ class PersonRepository(private val personDao: PersonDao) {
     @WorkerThread
     suspend fun insert(person: Person) {
         personDao.insert(person)
+    }
+
+    @WorkerThread
+    suspend fun getPersonByName(name: String) {
+        personDao.getPersonByName(name)
     }
 }
