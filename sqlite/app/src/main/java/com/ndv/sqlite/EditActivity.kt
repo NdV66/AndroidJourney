@@ -31,8 +31,8 @@ class EditActivity : AppCompatActivity() {
     }
 
     private fun prepareListener(): IPersonFieldsFragmentListener {
-        return IPersonFieldsFragmentListener { name: String, description: String ->
-            personViewModel.updatePerson(Person(name, description))
+        return IPersonFieldsFragmentListener {person: Person ->
+            personViewModel.updatePerson(person)
             onBackPressed()
         }
     }

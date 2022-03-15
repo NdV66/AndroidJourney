@@ -6,12 +6,16 @@ import kotlinx.coroutines.flow.Flow
 const val PERSON_TABLE = "person_table"
 const val NAME_COL = "name"
 const val DESCRIPTION_COL = "description"
+const val ID_COL = "id"
 
 @Entity(tableName = PERSON_TABLE)
 class Person(
-    @PrimaryKey
     @ColumnInfo(name = NAME_COL) val name: String,
     @ColumnInfo(name = DESCRIPTION_COL) val description: String,
+
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = ID_COL)
+    val id: Long = 0,
 ) {
     override fun toString(): String {
         return name

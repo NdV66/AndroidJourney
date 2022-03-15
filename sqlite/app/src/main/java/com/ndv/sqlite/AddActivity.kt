@@ -21,8 +21,8 @@ class AddActivity : AppCompatActivity() {
     }
 
     private fun prepareListener(): IPersonFieldsFragmentListener {
-        return IPersonFieldsFragmentListener { name: String, description: String ->
-            personViewModel.insert(Person(name, description))
+        return IPersonFieldsFragmentListener {person:  Person ->
+            personViewModel.insert(person)
             onBackPressed()
         }
     }

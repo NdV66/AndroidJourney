@@ -11,7 +11,7 @@ import com.ndv.sqlite.personDatabase.Person
 
 //https://kotlinlang.org/docs/fun-interfaces.html
 fun interface IPersonFieldsFragmentListener {
-    fun onClickSave(name: String, description: String)
+    fun onClickSave(person: Person)
 }
 
 class PersonFieldsFragment : Fragment() {
@@ -50,10 +50,17 @@ class PersonFieldsFragment : Fragment() {
         val nameText = view.findViewById<EditText>(R.id.nameText)
         val descriptionText = view.findViewById<EditText>(R.id.descriptionText)
 
+
         saveButton.setOnClickListener {
-            listener.onClickSave(
-                nameText.text.toString(),
-                descriptionText.text.toString())
+            val name = nameText.text.toString()
+            val description = descriptionText.text.toString()
+
+
+            if (person == null) {
+                listener.onClickSave(Person(name, description))
+            } else {
+                listener.onClickSave(Person(name, description, person!!.id))
+            }
         }
     }
 }
