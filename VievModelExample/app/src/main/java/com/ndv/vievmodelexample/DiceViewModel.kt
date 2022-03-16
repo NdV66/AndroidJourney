@@ -24,11 +24,6 @@ class DiceViewModel : ViewModel() {
         _rollsCount++
     }
 
-    fun reinitializeData() {
-        _rollResult = 0
-        _rollsCount = 0
-    }
-
     override fun onCleared() {
         super.onCleared()
         Log.d("DiceRoll", "DiceViewModel destroyed!")
