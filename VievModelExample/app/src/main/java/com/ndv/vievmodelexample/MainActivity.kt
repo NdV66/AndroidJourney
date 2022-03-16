@@ -1,14 +1,11 @@
 package com.ndv.vievmodelexample
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -46,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRollsCount() {
-        rollCountTextView.text = getString(R.string.rollsCount, viewModel.rollsCount)
+        viewModel.rollsCount.observe(this) { count -> rollCountTextView.text = count.toString() }
     }
 
     private fun showResultRollDialog() {
