@@ -43,7 +43,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRollsCount() {
-        viewModel.rollsCount.observe(this) { count -> rollCountTextView.text = count.toString() }
+        viewModel.rollsCount.observe(this) { count ->
+            rollCountTextView.text = getString(R.string.rollsCount, count)
+        }
     }
 
     private fun showResultRollDialog() {
