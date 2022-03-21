@@ -30,7 +30,7 @@ class MetalFragment : Fragment() {
         val button = requireView().findViewById<Button>(R.id.metalNextButton)
         button.setOnClickListener {
             val ringNameEditText = requireView().findViewById<EditText>(R.id.ringMetal)
-            sharedViewModel.setName(ringNameEditText.text.toString())
+            sharedViewModel.setMetal(ringNameEditText.text.toString())
             listener.onClick()
         }
     }

@@ -7,4 +7,7 @@
     <string name="name">Name</string>
     <string name="summary">Summary</string>
     <string name="metal">Metal</string>
+
+    <string name="ring_name_summary">Name: %1$s</string>
+    <string name="ring_metal_summary">Metal: %1$s</string>
 </resources>
