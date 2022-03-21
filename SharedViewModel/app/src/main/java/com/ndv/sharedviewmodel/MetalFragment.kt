@@ -9,7 +9,6 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 
-
 class MetalFragment : Fragment() {
     lateinit var listener: IStepperFragmentListener
     private val sharedViewModel by activityViewModels<RingViewModel>()
