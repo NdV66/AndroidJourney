@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">SharedViewModel</string>
+    <string name="start">Create Ring</string>
+    <string name="share">Share</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+    <string name="name">Name</string>
+    <string name="summary">Summary</string>
+    <string name="metal">Metal</string>
+</resources>
