@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">WorkManagerExample</string>
 
+    <string name="start_work_manager">Start work manager</string>
     <string name="title">Hello, I only start the joke worker!</string>
+    <string name="notification_title">Today joke</string>
     <string name="joke">Hand. Hand. River. Dirt. Gollum. Hobbits. Pockets. Pockets. Finger. Envelope. Fire. Hand. Neck. Neck. Finger. Hobbits. Neck. Neck. Neck. Pocket. Finger. LAVA… The Lord of the Rings Trilogy, from the perspective of the ring.</string>
 </resources>

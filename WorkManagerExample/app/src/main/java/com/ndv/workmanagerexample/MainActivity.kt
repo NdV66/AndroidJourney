@@ -1,8 +1,8 @@
 package com.ndv.workmanagerexample
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
 import androidx.work.*
 import java.util.concurrent.TimeUnit
 
@@ -11,7 +11,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        createJokeWorker()
+        setupStartJokeWorkerButton()
+    }
+
+    private fun setupStartJokeWorkerButton() {
+        val button = findViewById<Button>(R.id.startJokeWorkerButton)
+        button.setOnClickListener {  createJokeWorker() }
     }
 
     private fun createJokeWorker() {
@@ -20,7 +25,9 @@ class MainActivity : AppCompatActivity() {
             .setRequiresBatteryNotLow(false)
             .build()
 
-        val jokeData = workDataOf(JOKE_KEY to getString(R.string.joke))
+        val jokeData = workDataOf(
+            JOKE_KEY to getString(R.string.joke),
+            JOKE_TITLE_KEY to getString(R.string.notification_title))
 
         val workRequest = OneTimeWorkRequestBuilder<JokeWorker>()
             .setInputData(jokeData)
@@ -33,9 +40,4 @@ class MainActivity : AppCompatActivity() {
 
         WorkManager.getInstance(applicationContext).enqueue(workRequest)
     }
-
-    fun showNotification() {
-//        val builder = NotificationCompat.Builder
-    }
-
 }
