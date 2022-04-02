@@ -16,7 +16,29 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupStartJokeWorkerButton() {
         val button = findViewById<Button>(R.id.startJokeWorkerButton)
-        button.setOnClickListener {  createJokeWorker() }
+        button.setOnClickListener { createJokeWorker() }
+    }
+
+    private fun observeWRequestChanges(workRequest: WorkRequest) {
+        WorkManager.getInstance(this)
+            .getWorkInfoByIdLiveData(workRequest.id)
+            .observe(this
+            ) { workInfo ->
+                if (workInfo != null) {
+                    println("[WORK STATE]: ${workInfo.state.name}")
+                }
+            }
+    }
+
+    private fun createWorkRequest(constraints: Constraints, data: Data): OneTimeWorkRequest {
+        return OneTimeWorkRequestBuilder<JokeWorker>()
+            .setInputData(data)
+            .setConstraints(constraints)
+            .setBackoffCriteria(
+                BackoffPolicy.LINEAR,
+                OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
+                TimeUnit.MILLISECONDS)
+            .build()
     }
 
     private fun createJokeWorker() {
@@ -29,15 +51,9 @@ class MainActivity : AppCompatActivity() {
             JOKE_KEY to getString(R.string.joke),
             JOKE_TITLE_KEY to getString(R.string.notification_title))
 
-        val workRequest = OneTimeWorkRequestBuilder<JokeWorker>()
-            .setInputData(jokeData)
-            .setConstraints(constraints)
-            .setBackoffCriteria(
-                BackoffPolicy.LINEAR,
-                OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
-                TimeUnit.MILLISECONDS)
-            .build()
+        val workRequest = createWorkRequest(constraints, jokeData)
 
         WorkManager.getInstance(applicationContext).enqueue(workRequest)
+        observeWRequestChanges(workRequest)
     }
 }

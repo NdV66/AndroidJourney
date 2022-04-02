@@ -63,5 +63,4 @@ class JokeWorker(private val appContext: Context, workerParams: WorkerParameters
 
         return builder.build()
     }
-
 }
