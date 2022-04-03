@@ -48,8 +48,9 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         val jokeData = workDataOf(
-            JOKE_KEY to getString(R.string.joke),
-            JOKE_TITLE_KEY to getString(R.string.notification_title))
+            JOKE_KEY to getString(R.string.notification_description),
+            JOKE_TITLE_KEY to getString(R.string.notification_title),
+            JOKE_KEY to getString(R.string.joke))
 
         val workRequest = createWorkRequest(constraints, jokeData)
 

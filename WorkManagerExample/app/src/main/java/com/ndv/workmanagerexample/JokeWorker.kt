@@ -13,9 +13,11 @@ import androidx.work.WorkerParameters
 
 const val JOKE_KEY = "jokeKey"
 const val JOKE_TITLE_KEY = "title"
+const val FULL_JOKE_KEY = "joke"
 const val NOTIFICATION_ID = 66
 const val NOTIFICATION_NAME = "jokeWorker"
 const val NOTIFICATION_CHANNEL = "jokeWorker_channel_01"
+const val NOTIFICATION_CHANNEL_NAME = "jokeWorker_channel_name"
 
 class JokeWorker(private val appContext: Context, workerParams: WorkerParameters) :
     Worker(appContext, workerParams) {
@@ -29,6 +31,7 @@ class JokeWorker(private val appContext: Context, workerParams: WorkerParameters
         val actionPendingIntent = preparePendingIntent()
         val notificationManager =
             appContext.getSystemService(AppCompatActivity.NOTIFICATION_SERVICE) as NotificationManager
+
         val notification = prepareNotification(actionPendingIntent)
 
         createNotificationChannel(notificationManager)
@@ -44,11 +47,13 @@ class JokeWorker(private val appContext: Context, workerParams: WorkerParameters
     }
 
     private fun createNotificationChannel(notificationManager: NotificationManager) {
+
         val channel =
             NotificationChannel(NOTIFICATION_CHANNEL,
                 NOTIFICATION_NAME,
                 NotificationManager.IMPORTANCE_HIGH)
         notificationManager.createNotificationChannel(channel)
+
     }
 
     private fun prepareNotification(actionPendingIntent: PendingIntent): Notification {
@@ -57,6 +62,9 @@ class JokeWorker(private val appContext: Context, workerParams: WorkerParameters
                 .setSmallIcon(android.R.drawable.sym_def_app_icon)
                 .setContentTitle(inputData.getString(JOKE_TITLE_KEY)!!)
                 .setContentText(inputData.getString(JOKE_KEY)!!)
+                .setStyle(NotificationCompat
+                    .BigTextStyle()
+                    .bigText(inputData.getString(FULL_JOKE_KEY)))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
                 .setContentIntent(actionPendingIntent)
