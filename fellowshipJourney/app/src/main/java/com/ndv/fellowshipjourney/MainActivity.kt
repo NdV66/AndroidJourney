@@ -57,13 +57,21 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        println(">>>>>>>>>>>>>>>> <<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<< $requestCode")
-        println(grantResults[0])
+        val grantResultIsOk =
+            grantResults.isNotEmpty()
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    && grantResults[1] == PackageManager.PERMISSION_GRANTED
 
-        if (grantResults.isNotEmpty()) {
+        if (requestCode == PERMISSION_CODE && grantResultIsOk) {
             val intent = Intent(this, RoadService::class.java)
             bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE)
+        } else {
+            handleDenyPermissions()
         }
+    }
+
+    private fun handleDenyPermissions() {
+        println("NO PERMISSIONS")
     }
 
     override fun onDestroy() {
