@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">fellowshipJourney</string>
+    <string name="title">You journey with Ring is now...</string>
+    <string name="distance">$1%s km</string>
+</resources>
